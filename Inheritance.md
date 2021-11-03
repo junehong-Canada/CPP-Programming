@@ -90,6 +90,60 @@ Access Modes in C++ Inheritance
 The _private_ members of the base class are always _private_ in the derived class.
 
 ## Inheritance Access Control
+__Access Specifiers__: _public, protected, private_
+* __public inheritance__ makes _public_ members of the base class _public_ in the derives class, and the _protected_ members of the base class remain _protected_ in the derived class.
+* __protected inheritance__ makes the _public_ and _proetcted_ members of the base class _protected_ in the derived class.
+* __private inheritance__ makes the _public_ and _protected_ members of the base class _private_ in the derived class.
+<p>
+_private_ members of the base class are inaccessible to the derived class.
+</p>
+
+```
+class Base {
+  public:
+    int x;
+  protected:
+    int y;
+  private:
+    int z;
+};
+
+class PublicDerived: public Base {
+  // x is public
+  // y is protected
+  // z is not access from PublicDerived
+};
+
+class ProtectedDerived: protected Base {
+  // x is protected
+  // y is protected
+  // z is not access from ProtectedDerived
+};
+
+class PrivateDerived: private Base {
+  // x is private
+  // y is private
+  // z is not access from PrivateDerived
+};
+```
+__Accessibility in public Inheritance__
+Accessibility | private members | protected members | public members
+------------- | --------------- | ----------------- | --------------
+Base Class    | Yes             | Yes               | Yes
+Derived Class | No              | Yes               | Yes
+
+__Accessibility in protected Inheritance__
+
+Accessibility | private members | protected members | public members
+------------- | --------------- | ----------------- | --------------
+Base Class    | Yes             | Yes               | Yes
+Derived Class | No              | Yes               | Yes (inherited as protected variables)
+
+__Accessibility in private Inheritance__
+Accessibility | private members | protected members | public members
+------------- | --------------- | ----------------- | --------------
+Base Class    | Yes             | Yes               | Yes
+Derived Class | No              | Yes (inherited as private variables)| Yes (inherited as private variables)
 
 
 ## C++ Function Overriding
